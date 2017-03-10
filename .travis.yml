@@ -143,12 +143,11 @@ before_install:
 - if [ ${GENERATE_POSTGRESQL} = true ]; then curl --ftp-create-dirs -T postgresql-9.6.2-build.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}; fi
 - if [ ${GENERATE_POSTGRESQL} = true ]; then rm -f postgresql-9.6.2-build.tar.bz2; fi
 
-#g++ arm-linux-gnueabihf 
+#Yadoms sources
 - echo 'Downloading yadoms sources'
 - git clone --depth=1 -b ${BUILD_BRANCH} git://github.com/Yadoms/yadoms.git 
 
 script:
-
 # Yadoms configuration file
 - cd yadoms
 - echo 'Configuring Yadoms CMakeListsUserConfig.txt'
