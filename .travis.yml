@@ -147,6 +147,7 @@ before_install:
 - echo 'Downloading yadoms sources'
 - git clone --depth=1 -b ${BUILD_BRANCH} git://github.com/Yadoms/yadoms.git 
 
+
 script:
 # Yadoms configuration file
 - cd yadoms
