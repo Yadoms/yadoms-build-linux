@@ -95,7 +95,7 @@ before_install:
 - if [ ${GENERATE_GAMMU} != true ]; then echo "Bypass cd .."; else cd ..; fi
 - cd ..
 - if [ ${GENERATE_GAMMU} = true ]; then tar cjf gammu-1.38.1-build.tar.bz2 gammu-1.38.1; fi
-- if [ ${GENERATE_GAMMU} = true ]; then curl --ftp-create-dirs -T gammu-1.38.1-build.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ftp://ftp.jano42.fr/travis_build/static/; fi
+- if [ ${GENERATE_GAMMU} = true ]; then curl --ftp-create-dirs -T gammu-1.38.1-build.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}; fi
 - if [ ${GENERATE_GAMMU} = true ]; then rm -f gammu-1.38.1-build.tar.bz2; fi
 
 # PCRE
@@ -177,8 +177,8 @@ script:
 
 # Yadoms
 - echo 'Generating makefile'
-- cd projects
 - sh cmake_linux.sh r
+- cd projects
 - echo 'Building Yadoms'
 - make all_unity
 - cd ..
