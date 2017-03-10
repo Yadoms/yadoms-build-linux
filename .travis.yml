@@ -90,7 +90,7 @@ before_install:
 - cd gammu-1.38.1
 - if [ ${GENERATE_GAMMU} != true ]; then echo "Bypass mkdir build"; else mkdir build; fi
 - if [ ${GENERATE_GAMMU} != true ]; then echo "Bypass cd build"; else cd build; fi
-- if [ ${GENERATE_GAMMU} != true ]; then echo "Bypass cmake -DBUILD_SHARED_LIBS=OFF .."; else cmake -DBUILD_SHARED_LIBS=OFF .. > yadoms_gammu.log; fi
+- if [ ${GENERATE_GAMMU} != true ]; then echo "Bypass cmake"; else cmake -DBUILD_SHARED_LIBS=OFF .. > yadoms_gammu.log; fi
 - if [ ${GENERATE_GAMMU} != true ]; then echo "Bypass make"; else make > yadoms_gammu.log; fi
 - if [ ${GENERATE_GAMMU} != true ]; then echo "Bypass cd .."; else cd ..; fi
 - cd ..
@@ -121,9 +121,9 @@ before_install:
 - if [ ${GENERATE_PYTHON_HOST} != true ]; then wget -U 'Yadoms/1.0.0' ${YADOMS_DOWNLOAD_URL}/Python-2.7.13-build.tar.bz2; else wget https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tgz; fi
 - if [ ${GENERATE_PYTHON_HOST} != true ]; then tar xjf Python-2.7.13-build.tar.bz2; else tar xzf Python-2.7.13.tgz; fi
 - cd Python-2.7.13
-- if [ ${GENERATE_PYTHON_HOST} != true ]; then echo "Bypass PYTHON/configure"; else ./configure > $HOME/logs/yadoms_pythonhost.log; fi
-- if [ ${GENERATE_PYTHON_HOST} != true ]; then echo "Bypass PYTHON/make"; else make > $HOME/logs/yadoms_pythonhost.log; fi
-- sudo make install > $HOME/logs/yadoms_pythonhost.log
+- if [ ${GENERATE_PYTHON_HOST} != true ]; then echo "Bypass PYTHON/configure"; else ./configure > $HOME/logs/yadoms_python.log; fi
+- if [ ${GENERATE_PYTHON_HOST} != true ]; then echo "Bypass PYTHON/make"; else make > $HOME/logs/yadoms_python.log; fi
+- sudo make install > $HOME/logs/yadoms_python.log
 - cd ..
 - if [ ${GENERATE_PYTHON_HOST} = true ]; then tar cjf Python-2.7.13-build.tar.bz2 Python-2.7.13; fi
 - if [ ${GENERATE_PYTHON_HOST} = true ]; then curl --ftp-create-dirs -T Python-2.7.13-build.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}; fi
@@ -144,7 +144,7 @@ before_install:
 - if [ ${GENERATE_POSTGRESQL} = true ]; then rm -f postgresql-9.6.2-build.tar.bz2; fi
 
 #g++ arm-linux-gnueabihf 
-- echo 'Installing arm-linux-gnueabihf cross toolchain'
+- echo 'Downloading yadoms sources'
 - git clone --depth=1 -b ${BUILD_BRANCH} git://github.com/Yadoms/yadoms.git 
 
 script:
