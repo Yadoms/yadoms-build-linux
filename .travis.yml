@@ -169,13 +169,10 @@ script:
 - echo 'set(PROTOBUF_INSTALLED_TO_CUSTOM_DIRECTORY ON)' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo 'set(OPENSSL_ROOT "'$HOME'/depsBuild/openssl")' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo 'set(DEBUG_WITH_GCC OFF)' >> yadoms/sources/CMakeListsUserConfig.txt
-- echo 'set(PYTHON_USE_PKGCONFIG OFF)' >> yadoms/sources/CMakeListsUserConfig.txt
-- echo 'set(PYTHON_USE_SOURCES ON)' >> yadoms/sources/CMakeListsUserConfig.txt
-- echo 'set(PYTHON_ROOT "'$PWD'/Python-2.7.13")' >> yadoms/sources/CMakeListsUserConfig.txt
-- echo 'set(PYTHON_LIBRARIES "'$PWD'/Python-2.7.13/libpython2.7.so")' >> yadoms/sources/CMakeListsUserConfig.txt
-- echo 'set(PYTHON_INCLUDE_DIRS ' >> yadoms/sources/CMakeListsUserConfig.txt
-- echo '       "'$PWD'/Python-2.7.13"' >> yadoms/sources/CMakeListsUserConfig.txt
-- echo '       "'$PWD'/Python-2.7.13/Include")' >> yadoms/sources/CMakeListsUserConfig.txt
+- echo 'set(PYTHON_USE_PKGCONFIG ON)' >> yadoms/sources/CMakeListsUserConfig.txt
+- echo 'set(PYTHON_USE_SOURCES OFF)' >> yadoms/sources/CMakeListsUserConfig.txt
+#- echo 'set(PYTHON_ROOT "'$PWD'/Python-2.7.13")' >> yadoms/sources/CMakeListsUserConfig.txt
+#- echo 'set(PYTHON_LIBRARIES "'$PWD'/Python-2.7.13/libpython2.7.a")' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo 'set(PostgreSQL_ROOT ' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo '       "'$PWD'/postgresql-9.6.2/src/interfaces/libpq"' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo '       "'$PWD'/postgresql-9.6.2/src/include")' >> yadoms/sources/CMakeListsUserConfig.txt
@@ -188,11 +185,6 @@ script:
 - cat yadoms/sources/CMakeListsUserConfig.txt
 
 # Yadoms
-- echo 'Protoc'
-- protoc --version
-- echo 'Protoc installed'
-- $HOME/depsBuild/protobuf/bin/protoc --version
-
 - cd yadoms
 - echo 'Generating makefile'
 - sh cmake_linux.sh r
