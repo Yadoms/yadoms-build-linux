@@ -182,11 +182,11 @@ script:
 - echo 'Generating makefile'
 - sh cmake_linux.sh r
 
-- echo 'message("PROTOBUF_ROOT: ${PROTOBUF_ROOT}")' >> yadoms/sources/CMakeListsUserConfig.txt
-- echo 'message("PROTOBUF_PROTOC_EXECUTABLE ${PROTOBUF_PROTOC_EXECUTABLE}")' >> yadoms/sources/CMakeListsUserConfig.txt
-- echo 'message("PROTOBUF_INCLUDE_DIR ${PROTOBUF_INCLUDE_DIR}")' >> yadoms/sources/CMakeListsUserConfig.txt
-- echo 'message("PROTOBUF_LIBRARY ${PROTOBUF_LIBRARY}")' >> yadoms/sources/CMakeListsUserConfig.txt
-- echo 'message("PROTOBUF_LIBRARY_DEBUG ${PROTOBUF_LIBRARY_DEBUG}")' >> yadoms/sources/CMakeListsUserConfig.txt
+- echo 'message("PROTOBUF_ROOT: ${PROTOBUF_ROOT}")' >> yadoms/sources/CMakeLists.txt
+- echo 'message("PROTOBUF_PROTOC_EXECUTABLE ${PROTOBUF_PROTOC_EXECUTABLE}")' >> yadoms/sources/CMakeLists.txt
+- echo 'message("PROTOBUF_INCLUDE_DIR ${PROTOBUF_INCLUDE_DIR}")' >> yadoms/sources/CMakeLists.txt
+- echo 'message("PROTOBUF_LIBRARY ${PROTOBUF_LIBRARY}")' >> yadoms/sources/CMakeLists.txt
+- echo 'message("PROTOBUF_LIBRARY_DEBUG ${PROTOBUF_LIBRARY_DEBUG}")' >> yadoms/sources/CMakeLists.txt
 
 - cd projects
 - echo 'Building Yadoms'
