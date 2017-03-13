@@ -155,6 +155,7 @@ script:
 - echo 'set(BOOST_ROOT "'$PWD'/boost_1_63_0")' > yadoms/sources/CMakeListsUserConfig.txt
 - echo 'set(POCO_ROOT "'$PWD'/poco-1.7.7-all")' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo 'set(PROTOBUF_ROOT "'$HOME'/depsBuild/protobuf")' >> yadoms/sources/CMakeListsUserConfig.txt
+- echo 'set(PROTOBUF_EXECUTABLE "${PROTOBUF_ROOT}/bin/protoc")' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo 'set(PROTOBUF_INSTALLED_TO_CUSTOM_DIRECTORY ON)' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo 'set(OPENSSL_ROOT "'$HOME'/depsBuild/openssl")' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo 'set(DEBUG_WITH_GCC OFF)' >> yadoms/sources/CMakeListsUserConfig.txt
