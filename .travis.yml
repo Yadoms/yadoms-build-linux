@@ -70,6 +70,7 @@ before_install:
 
 # protobuf
 - echo 'Building Protobuf 3.2.0'
+- sudo apt-get install autoconf automake libtool curl make g++ unzip
 - if [ ${GENERATE_PROTOBUF} != true ]; then wget -U 'Yadoms/1.0.0' ${YADOMS_DOWNLOAD_URL}/protobuf-3.2.0-build.tar.bz2; else wget https://github.com/google/protobuf/releases/download/v3.2.0/protobuf-cpp-3.2.0.tar.gz; fi
 - if [ ${GENERATE_PROTOBUF} != true ]; then tar xjf protobuf-3.2.0-build.tar.bz2 -C $HOME/depsBuild; else tar xzf protobuf-cpp-3.2.0.tar.gz; fi
 - if [ ${GENERATE_PROTOBUF} != true ]; then echo "Bypass protobuf/cd"; else cd protobuf-3.2.0; fi
@@ -196,8 +197,8 @@ after_failure:  # this will of course run only on failure
 # Package logs
 - echo 'Package logs'
 - cd $HOME
-- tar cjf logs.`cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`.tar.bz2 logs
-- curl --ftp-create-dirs -T logs.`cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}
+- tar cjf logs.`cat $HOME/build/yadoms/sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`.tar.bz2 logs
+- curl --ftp-create-dirs -T logs.`cat $HOME/build/yadoms/sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}
 
 after_success: # and this only on success
 # Package binaries
