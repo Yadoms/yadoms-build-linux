@@ -180,6 +180,11 @@ script:
 - cat yadoms/sources/CMakeListsUserConfig.txt
 
 # Yadoms
+- echo 'Protoc'
+- protoc --version
+- echo 'Protoc installed'
+- $HOME/depsBuild/protobuf/bin/protoc --verion
+
 - cd yadoms
 - echo 'Generating makefile'
 - sh cmake_linux.sh r
