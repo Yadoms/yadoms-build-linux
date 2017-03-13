@@ -156,7 +156,6 @@ script:
 - echo 'set(BOOST_ROOT "'$PWD'/../boost_1_63_0")' > sources/CMakeListsUserConfig.txt
 - echo 'set(POCO_ROOT "'$PWD'/../poco-1.7.7-all")' >> sources/CMakeListsUserConfig.txt
 - echo 'set(PROTOBUF_ROOT "'$HOME'/depsBuild/protobuf")' >> sources/CMakeListsUserConfig.txt
-- echo 'set(PROTOBUF_PROTOC_EXECUTABLE "'`which protoc`'")' >> sources/CMakeListsUserConfig.txt
 - echo 'set(PROTOBUF_INSTALLED_TO_CUSTOM_DIRECTORY ON)' >> sources/CMakeListsUserConfig.txt
 - echo 'set(OPENSSL_ROOT "'$HOME'/depsBuild/openssl")' >> sources/CMakeListsUserConfig.txt
 - echo 'set(DEBUG_WITH_GCC OFF)' >> sources/CMakeListsUserConfig.txt
