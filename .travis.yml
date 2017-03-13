@@ -155,17 +155,17 @@ script:
 - echo 'set(BOOST_ROOT "'$PWD'/boost_1_63_0")' > yadoms/sources/CMakeListsUserConfig.txt
 - echo 'set(POCO_ROOT "'$PWD'/poco-1.7.7-all")' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo 'set(PROTOBUF_ROOT "'$HOME'/depsBuild/protobuf")' >> yadoms/sources/CMakeListsUserConfig.txt
-- echo 'set(PROTOBUF_PROTOC_EXECUTABLE "${PROTOBUF_ROOT}/bin/protoc")' >> yadoms/sources/CMakeListsUserConfig.txt
+- echo 'set(PROTOBUF_PROTOC_EXECUTABLE "'$HOME'/depsBuild/protobuf/bin/protoc")' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo 'set(PROTOBUF_INSTALLED_TO_CUSTOM_DIRECTORY ON)' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo 'set(OPENSSL_ROOT "'$HOME'/depsBuild/openssl")' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo 'set(DEBUG_WITH_GCC OFF)' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo 'set(PYTHON_USE_PKGCONFIG OFF)' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo 'set(PYTHON_USE_SOURCES ON)' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo 'set(PYTHON_ROOT "'$PWD'/Python-2.7.13")' >> yadoms/sources/CMakeListsUserConfig.txt
-- echo 'set(PYTHON_LIBRARIES "${PYTHON_ROOT}/libpython2.7.so")' >> yadoms/sources/CMakeListsUserConfig.txt
+- echo 'set(PYTHON_LIBRARIES "'$PWD'/Python-2.7.13/libpython2.7.so")' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo 'set(PYTHON_INCLUDE_DIRS ' >> yadoms/sources/CMakeListsUserConfig.txt
-- echo '       ${PYTHON_ROOT}' >> yadoms/sources/CMakeListsUserConfig.txt
-- echo '       ${PYTHON_ROOT}/Include)' >> yadoms/sources/CMakeListsUserConfig.txt
+- echo '       "'$PWD'/Python-2.7.13'" >> yadoms/sources/CMakeListsUserConfig.txt
+- echo '       "'$PWD'/Python-2.7.13/Include")' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo 'set(PostgreSQL_ROOT ' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo '       "'$PWD'/postgresql-9.6.2/src/interfaces/libpq"' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo '       "'$PWD'/postgresql-9.6.2/src/include")' >> yadoms/sources/CMakeListsUserConfig.txt
@@ -181,13 +181,6 @@ script:
 - cd yadoms
 - echo 'Generating makefile'
 - sh cmake_linux.sh r
-
-- echo 'message("PROTOBUF_ROOT: ${PROTOBUF_ROOT}")' >> yadoms/sources/CMakeLists.txt
-- echo 'message("PROTOBUF_PROTOC_EXECUTABLE ${PROTOBUF_PROTOC_EXECUTABLE}")' >> yadoms/sources/CMakeLists.txt
-- echo 'message("PROTOBUF_INCLUDE_DIR ${PROTOBUF_INCLUDE_DIR}")' >> yadoms/sources/CMakeLists.txt
-- echo 'message("PROTOBUF_LIBRARY ${PROTOBUF_LIBRARY}")' >> yadoms/sources/CMakeLists.txt
-- echo 'message("PROTOBUF_LIBRARY_DEBUG ${PROTOBUF_LIBRARY_DEBUG}")' >> yadoms/sources/CMakeLists.txt
-
 - cd projects
 - echo 'Building Yadoms'
 - make all_unity
