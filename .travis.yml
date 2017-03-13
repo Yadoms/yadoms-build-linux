@@ -131,7 +131,7 @@ before_install:
 - if [ ${GENERATE_PYTHON} != true ]; then wget -U 'Yadoms/1.0.0' ${YADOMS_DOWNLOAD_URL}/Python-2.7.13-build.tar.bz2; else wget https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tgz; fi
 - if [ ${GENERATE_PYTHON} != true ]; then tar xjf Python-2.7.13-build.tar.bz2; else tar xzf Python-2.7.13.tgz; fi
 - cd Python-2.7.13
-- if [ ${GENERATE_PYTHON} != true ]; then echo "Bypass PYTHON/configure"; else ./configure > $HOME/logs/yadoms_python.log; fi
+- if [ ${GENERATE_PYTHON} != true ]; then echo "Bypass PYTHON/configure --enable-shared"; else ./configure > $HOME/logs/yadoms_python.log; fi
 - if [ ${GENERATE_PYTHON} != true ]; then echo "Bypass PYTHON/make"; else make > $HOME/logs/yadoms_python.log; fi
 - sudo make install > $HOME/logs/yadoms_python.log
 - cd ..
