@@ -15,7 +15,7 @@ before_install:
 
 # deps
 - echo 'Installing some dependencies'
-- sudo apt-get install libbz2-dev python-dev libudev-dev rpm-build
+- sudo apt-get install libbz2-dev python-dev libudev-dev rpm
 
 #make dir
 - mkdir -p $HOME/depsBuild
