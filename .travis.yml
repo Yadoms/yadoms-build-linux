@@ -127,18 +127,18 @@ before_install:
 
 # Python
 - sudo apt-get install python-dev
-- echo 'Building Python'
-- if [ ${GENERATE_PYTHON} != true ]; then wget -U 'Yadoms/1.0.0' ${YADOMS_DOWNLOAD_URL}/Python-2.7.13-build.tar.bz2; else wget https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tgz; fi
-- if [ ${GENERATE_PYTHON} != true ]; then tar xjf Python-2.7.13-build.tar.bz2; else tar xzf Python-2.7.13.tgz; fi
-- cd Python-2.7.13
-- if [ ${GENERATE_PYTHON} != true ]; then echo "Bypass PYTHON/configure"; else ./configure --enable-shared > $HOME/logs/yadoms_python.log; fi
-- if [ ${GENERATE_PYTHON} != true ]; then echo "Bypass PYTHON/make"; else make > $HOME/logs/yadoms_python.log; fi
-- sudo make install > $HOME/logs/yadoms_python.log
-- cd ..
-- if [ ${GENERATE_PYTHON} = true ]; then tar cjf Python-2.7.13-build.tar.bz2 Python-2.7.13; fi
-- if [ ${GENERATE_PYTHON} = true ]; then curl --ftp-create-dirs -T Python-2.7.13-build.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}; fi
-- if [ ${GENERATE_PYTHON} = true ]; then rm -f Python-2.7.13-build.tar.bz2; fi
-- sudo rm -Rf Python-2.7.13
+#- echo 'Building Python'
+#- if [ ${GENERATE_PYTHON} != true ]; then wget -U 'Yadoms/1.0.0' ${YADOMS_DOWNLOAD_URL}/Python-2.7.13-build.tar.bz2; else wget https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tgz; fi
+#- if [ ${GENERATE_PYTHON} != true ]; then tar xjf Python-2.7.13-build.tar.bz2; else tar xzf Python-2.7.13.tgz; fi
+#- cd Python-2.7.13
+#- if [ ${GENERATE_PYTHON} != true ]; then echo "Bypass PYTHON/configure"; else ./configure --enable-shared > $HOME/logs/yadoms_python.log; fi
+#- if [ ${GENERATE_PYTHON} != true ]; then echo "Bypass PYTHON/make"; else make > $HOME/logs/yadoms_python.log; fi
+#- sudo make install > $HOME/logs/yadoms_python.log
+#- cd ..
+#- if [ ${GENERATE_PYTHON} = true ]; then tar cjf Python-2.7.13-build.tar.bz2 Python-2.7.13; fi
+#- if [ ${GENERATE_PYTHON} = true ]; then curl --ftp-create-dirs -T Python-2.7.13-build.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}; fi
+#- if [ ${GENERATE_PYTHON} = true ]; then rm -f Python-2.7.13-build.tar.bz2; fi
+#- sudo rm -Rf Python-2.7.13
 
 # PostgreSQL
 - echo 'Building PostgreSQL'
@@ -169,13 +169,13 @@ script:
 - echo 'set(PROTOBUF_INSTALLED_TO_CUSTOM_DIRECTORY ON)' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo 'set(OPENSSL_ROOT "'$HOME'/depsBuild/openssl")' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo 'set(DEBUG_WITH_GCC OFF)' >> yadoms/sources/CMakeListsUserConfig.txt
-- echo 'set(PYTHON_USE_PKGCONFIG OFF)' >> yadoms/sources/CMakeListsUserConfig.txt
-- echo 'set(PYTHON_USE_SOURCES ON)' >> yadoms/sources/CMakeListsUserConfig.txt
-- echo 'set(PYTHON_ROOT "'$PWD'/Python-2.7.13")' >> yadoms/sources/CMakeListsUserConfig.txt
-- echo 'set(PYTHON_LIBRARIES "'$PWD'/Python-2.7.13/libpython2.7.so")' >> yadoms/sources/CMakeListsUserConfig.txt
-- echo 'set(PYTHON_INCLUDE_DIRS ' >> yadoms/sources/CMakeListsUserConfig.txt
-- echo '       "'$PWD'/Python-2.7.13"' >> yadoms/sources/CMakeListsUserConfig.txt
-- echo '       "'$PWD'/Python-2.7.13/Include")' >> yadoms/sources/CMakeListsUserConfig.txt
+- echo 'set(PYTHON_USE_PKGCONFIG ON)' >> yadoms/sources/CMakeListsUserConfig.txt
+- echo 'set(PYTHON_USE_SOURCES OFF)' >> yadoms/sources/CMakeListsUserConfig.txt
+#- echo 'set(PYTHON_ROOT "'$PWD'/Python-2.7.13")' >> yadoms/sources/CMakeListsUserConfig.txt
+#- echo 'set(PYTHON_LIBRARIES "'$PWD'/Python-2.7.13/libpython2.7.so")' >> yadoms/sources/CMakeListsUserConfig.txt
+#- echo 'set(PYTHON_INCLUDE_DIRS ' >> yadoms/sources/CMakeListsUserConfig.txt
+#- echo '       "'$PWD'/Python-2.7.13"' >> yadoms/sources/CMakeListsUserConfig.txt
+#- echo '       "'$PWD'/Python-2.7.13/Include")' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo 'set(PostgreSQL_ROOT ' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo '       "'$PWD'/postgresql-9.6.2/src/interfaces/libpq"' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo '       "'$PWD'/postgresql-9.6.2/src/include")' >> yadoms/sources/CMakeListsUserConfig.txt
