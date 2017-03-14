@@ -127,18 +127,17 @@ before_install:
 
 # Python
 - sudo apt-get install python-dev
-#- echo 'Building Python'
-#- if [ ${GENERATE_PYTHON} != true ]; then wget -U 'Yadoms/1.0.0' ${YADOMS_DOWNLOAD_URL}/Python-2.7.13-build.tar.bz2; else wget https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tgz; fi
-#- if [ ${GENERATE_PYTHON} != true ]; then tar xjf Python-2.7.13-build.tar.bz2; else tar xzf Python-2.7.13.tgz; fi
-#- cd Python-2.7.13
-#- if [ ${GENERATE_PYTHON} != true ]; then echo "Bypass PYTHON/configure"; else ./configure --enable-shared > $HOME/logs/yadoms_python.log; fi
-#- if [ ${GENERATE_PYTHON} != true ]; then echo "Bypass PYTHON/make"; else make > $HOME/logs/yadoms_python.log; fi
-#- sudo make install > $HOME/logs/yadoms_python.log
-#- cd ..
-#- if [ ${GENERATE_PYTHON} = true ]; then tar cjf Python-2.7.13-build.tar.bz2 Python-2.7.13; fi
-#- if [ ${GENERATE_PYTHON} = true ]; then curl --ftp-create-dirs -T Python-2.7.13-build.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}; fi
-#- if [ ${GENERATE_PYTHON} = true ]; then rm -f Python-2.7.13-build.tar.bz2; fi
-#- sudo rm -Rf Python-2.7.13
+- echo 'Building Python'
+- if [ ${GENERATE_PYTHON} != true ]; then wget -U 'Yadoms/1.0.0' ${YADOMS_DOWNLOAD_URL}/Python-2.7.13-build.tar.bz2; else wget https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tgz; fi
+- if [ ${GENERATE_PYTHON} != true ]; then tar xjf Python-2.7.13-build.tar.bz2; else tar xzf Python-2.7.13.tgz; fi
+- cd Python-2.7.13
+- if [ ${GENERATE_PYTHON} != true ]; then echo "Bypass PYTHON/configure"; else ./configure --enable-shared > $HOME/logs/yadoms_python.log; fi
+- if [ ${GENERATE_PYTHON} != true ]; then echo "Bypass PYTHON/make"; else make > $HOME/logs/yadoms_python.log; fi
+- sudo make install > $HOME/logs/yadoms_python.log
+- cd ..
+- if [ ${GENERATE_PYTHON} = true ]; then tar cjf Python-2.7.13-build.tar.bz2 Python-2.7.13; fi
+- if [ ${GENERATE_PYTHON} = true ]; then curl --ftp-create-dirs -T Python-2.7.13-build.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}; fi
+- if [ ${GENERATE_PYTHON} = true ]; then rm -f Python-2.7.13-build.tar.bz2; fi
 
 # PostgreSQL
 - echo 'Building PostgreSQL'
@@ -223,7 +222,7 @@ after_success: # and this only on success
 
 #rename folder and package it
 - mv builds yadoms-linux-` cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`
-- tar cjf yadoms-linux-`cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`.${TRAVIS_COMMIT}.tar.bz2 yadoms-linux-`cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`
-- curl --ftp-create-dirs -T yadoms-linux-`cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`.${TRAVIS_COMMIT}.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}
+- tar cjf yadoms-linux-`cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`.${BUILD_BRANCH}.tar.bz2 yadoms-linux-`cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`
+- curl --ftp-create-dirs -T yadoms-linux-`cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`.${BUILD_BRANCH}.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}
 
 
