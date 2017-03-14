@@ -184,6 +184,9 @@ script:
 - echo 'Result:'
 - cat yadoms/sources/CMakeListsUserConfig.txt
 
+# Setup package output to be realized with unity targets
+- echo 'set(CMAKE_SKIP_INSTALL_ALL_DEPENDENCY TRUE)' >> yadoms/sources/CMakeLists.txt
+
 # Yadoms
 - cd yadoms
 - echo 'Generating makefile'
@@ -191,12 +194,6 @@ script:
 - cd projects
 - echo 'Building Yadoms'
 - make all_unity
-- cd ..
-
-# Make Package => should not be executed if "make all_unity" is done before; 
-- cd projects
-- echo 'Building Yadoms Package'
-- make package/fast
 - cd ..
 
 after_failure:  # this will of course run only on failure
@@ -207,6 +204,12 @@ after_failure:  # this will of course run only on failure
 - curl --ftp-create-dirs -T logs.`cat $HOME/build/yadoms/sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}
 
 after_success: # and this only on success
+# Make Package => should not be executed if "make all_unity" is done before; 
+- cd projects
+- echo 'Building Yadoms Package'
+- make package/fast
+- cd ..
+
 # Package binaries
 - echo 'Package binaries'
 
