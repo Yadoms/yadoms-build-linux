@@ -15,7 +15,7 @@ before_install:
 
 # deps
 - echo 'Installing some dependencies'
-- sudo apt-get install libbz2-dev python-dev libudev-dev rpm
+- sudo apt-get install libbz2-dev libudev-dev rpm
 
 #make dir
 - mkdir -p $HOME/depsBuild
@@ -94,7 +94,7 @@ before_install:
 
 # gammu
 - echo 'Building Gammu 1.38.1'
-- sudo apt-get install python-dev pkg-config libmysqlclient-dev libpq-dev libcurl4-gnutls-dev libusb-1.0-0-dev libdbi0-dev libbluetooth-dev libgudev-1.0-dev libglib2.0-dev unixodbc-dev
+- sudo apt-get install pkg-config libmysqlclient-dev libpq-dev libcurl4-gnutls-dev libusb-1.0-0-dev libdbi0-dev libbluetooth-dev libgudev-1.0-dev libglib2.0-dev unixodbc-dev
 - if [ ${GENERATE_GAMMU} != true ]; then wget -U 'Mozilla/5.0' http://yadoms.com/travis_build/static/gammu-1.38.1-build.tar.bz2; else wget http://dl.cihar.com/gammu/releases/gammu-1.38.1.tar.gz; fi
 - if [ ${GENERATE_GAMMU} != true ]; then tar xjf gammu-1.38.1-build.tar.bz2; else tar zxf gammu-1.38.1.tar.gz; fi
 - cd gammu-1.38.1
@@ -126,7 +126,7 @@ before_install:
 - if [ ${GENERATE_SWIG} = true ]; then rm -f swig-3.0.12-build.tar.bz2; fi
 
 # Python
-- sudo apt-get install python-dev
+#- sudo apt-get install python-dev
 - echo 'Building Python'
 - if [ ${GENERATE_PYTHON} != true ]; then wget -U 'Yadoms/1.0.0' ${YADOMS_DOWNLOAD_URL}/Python-2.7.13-build.tar.bz2; else wget https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tgz; fi
 - if [ ${GENERATE_PYTHON} != true ]; then tar xjf Python-2.7.13-build.tar.bz2; else tar xzf Python-2.7.13.tgz; fi
