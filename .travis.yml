@@ -96,7 +96,7 @@ before_install:
 # gammu
 - echo 'Building Gammu 1.38.4'
 - sudo apt-get install pkg-config libmysqlclient-dev libpq-dev libcurl4-gnutls-dev libusb-1.0-0-dev libdbi0-dev libbluetooth-dev libgudev-1.0-dev libglib2.0-dev unixodbc-dev
-- if [ ${GENERATE_GAMMU} != true ]; then wget -U 'Mozilla/5.0' http://yadoms.com/travis_build/static/gammu-1.38.4-build.tar.bz2; else wget http://dl.cihar.com/gammu/releases/gammu-1.38.4.tar.gz; fi
+- if [ ${GENERATE_GAMMU} != true ]; then wget -U 'Mozilla/5.0' ${YADOMS_DOWNLOAD_URL}/gammu-1.38.4-build.tar.bz2; else wget http://dl.cihar.com/gammu/releases/gammu-1.38.4.tar.gz; fi
 - if [ ${GENERATE_GAMMU} != true ]; then tar xjf gammu-1.38.4-build.tar.bz2; else tar zxf gammu-1.38.4.tar.gz; fi
 - cd gammu-1.38.4
 - if [ ${GENERATE_GAMMU} != true ]; then echo "Bypass mkdir build"; else mkdir build; fi
