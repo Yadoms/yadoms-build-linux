@@ -16,7 +16,7 @@ before_install:
 
 # deps
 - echo 'Installing some dependencies'
-- sudo apt-get install libbz2-dev libudev-dev rpm
+- sudo apt-get install libbz2-dev libudev-dev rpm zip
 
 #make dir
 - mkdir -p $HOME/depsBuild
@@ -200,6 +200,25 @@ script:
 - echo 'Building Yadoms Package'
 - make package/fast
 - cd ..
+
+# Make update package
+- mkdir updatepackage
+#copy script
+- cp update/scripts/update.sh updatepackage/update.sh
+#generate package.json
+- cp ../package.json.in updatepackage/package.json
+- sed -i -- 's/__version__/'`cat $HOME/build/yadoms/sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`'/g' updatepackage/package.json
+- sed -i -- 's/__gitdate__/'`git log -1 --format=%cI `'/g' updatepackage/package.json
+- mv builds/package packagetomove
+- mv builds updatepackage/package
+- rm -f updatepackage/package/yadoms.ini
+- cd updatepackage
+- zip -r ../builds/package/package.zip ./ -x \*.gitignore
+- cd ..
+- mkdir builds
+- mv packagetomove builds/package
+- mv package.zip builds/package
+
 
 after_failure:  # this will of course run only on failure
 # Package logs
