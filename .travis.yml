@@ -207,7 +207,7 @@ script:
 - cp update/scripts/update.sh updatepackage/update.sh
 #generate package.json
 - cp ../package.json.in updatepackage/package.json
-- sed -i -- 's/__version__/'`cat $HOME/build/yadoms/sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`'/g' updatepackage/package.json
+- sed -i -- 's/__version__/'`cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`'/g' updatepackage/package.json
 - sed -i -- 's/__gitdate__/'`git log -1 --format=%cI `'/g' updatepackage/package.json
 - mv builds/package packagetomove
 - mv builds updatepackage/package
@@ -224,8 +224,8 @@ after_failure:  # this will of course run only on failure
 # Package logs
 - echo 'Package logs'
 - cd $HOME
-- tar cjf logs.`cat $HOME/build/yadoms/sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`.tar.bz2 logs
-- curl --ftp-create-dirs -T logs.`cat $HOME/build/yadoms/sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}
+- tar cjf logs.`cat build/yadoms/sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`.tar.bz2 logs
+- curl --ftp-create-dirs -T logs.`cat build/yadoms/sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}
 
 after_success: # and this only on success
 # Upload packages
