@@ -198,7 +198,7 @@ script:
 # Make Package => should not be executed if "make all_unity" is done before; 
 - cd projects
 - echo 'Building Yadoms Package'
-- make package/fast
+- make package
 - cd ..
 
 # Make update package
