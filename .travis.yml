@@ -1,6 +1,9 @@
 language: cpp
 dist: trusty
 
+# Seems to have a bad Python version in last trusty image. Need to be retested later
+group: deprecated-2017Q4
+
 #limit to git depth to 1 because don't use any git command in this script
 git:
   depth: 1
