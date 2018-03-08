@@ -126,7 +126,7 @@ before_install:
 - cd swig-3.0.12
 - if [ ${GENERATE_SWIG} != true ]; then echo "Bypass SWIG/configure"; else ./configure > $HOME/logs/yadoms_swig.log; fi
 - if [ ${GENERATE_SWIG} != true ]; then echo "Bypass SWIG/make"; else make > $HOME/logs/yadoms_swig.log; fi
-- sudo make install > $HOME/logs/yadoms_swig.log
+# - sudo make install > $HOME/logs/yadoms_swig.log
 - cd ..
 - if [ ${GENERATE_SWIG} = true ]; then tar cjf swig-3.0.12-build.tar.bz2 swig-3.0.12; fi
 - if [ ${GENERATE_SWIG} = true ]; then curl --ftp-create-dirs -T swig-3.0.12-build.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}; fi
