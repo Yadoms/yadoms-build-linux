@@ -40,7 +40,7 @@ before_install:
 - sudo make install
 - cd ..
 - if [ ${GENERATE_CMAKE} = true ]; then tar cjf cmake-3.10.2-build.tar.bz2 cmake-3.10.2; fi
-- if [ ${GENERATE_CMAKE} = true ]; then curl --ftp-create-dirs -T cmake-3.10.2-build.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}/yadoms-build-linux; fi
+- if [ ${GENERATE_CMAKE} = true ]; then curl --ftp-create-dirs -T cmake-3.10.2-build.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}/yadoms-build-linux/; fi
 - if [ ${GENERATE_CMAKE} = true ]; then rm -f cmake-3.10.2-build.tar.bz2; fi
 
 # boost
@@ -52,7 +52,7 @@ before_install:
 - if [ ${GENERATE_BOOST} != true ]; then echo "Bypass boost/b2"; else ./b2 --with-atomic --with-chrono --with-date_time --with-filesystem --with-regex --with-thread --with-system link=static runtime-link=static cxxflags=-fPIC > $HOME/logs/yadoms_boost.log; fi
 - cd ..
 - if [ ${GENERATE_BOOST} = true ]; then tar cjf boost_1_65_1-build.tar.bz2 boost_1_65_1; fi
-- if [ ${GENERATE_BOOST} = true ]; then curl --ftp-create-dirs -T boost_1_65_1-build.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}; fi
+- if [ ${GENERATE_BOOST} = true ]; then curl --ftp-create-dirs -T boost_1_65_1-build.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}/; fi
 - if [ ${GENERATE_BOOST} = true ]; then rm -f boost_1_65_1-build.tar.bz2; fi
   
  # openssl
@@ -65,7 +65,7 @@ before_install:
 - make install > $HOME/logs/yadoms_openssl.log
 - cd ..
 - if [ ${GENERATE_OPENSSL} = true ]; then tar cjf openssl-1.1.0g-build.tar.bz2 openssl-1.1.0g; fi
-- if [ ${GENERATE_OPENSSL} = true ]; then curl --ftp-create-dirs -T openssl-1.1.0g-build.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}; fi
+- if [ ${GENERATE_OPENSSL} = true ]; then curl --ftp-create-dirs -T openssl-1.1.0g-build.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}/; fi
 - if [ ${GENERATE_OPENSSL} = true ]; then rm -f openssl-1.1.0g-build.tar.bz2; fi
 
 # poco
@@ -80,7 +80,7 @@ before_install:
 - if [ ${GENERATE_POCO} != true ]; then echo "Bypass poco/make"; else make > $HOME/logs/yadoms_poco.log; fi
 - cd ..
 - if [ ${GENERATE_POCO} = true ]; then tar cjf poco-1.8.1-all-build.tar.bz2 poco-1.8.1-all; fi
-- if [ ${GENERATE_POCO} = true ]; then curl --ftp-create-dirs -T poco-1.8.1-all-build.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}; fi
+- if [ ${GENERATE_POCO} = true ]; then curl --ftp-create-dirs -T poco-1.8.1-all-build.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}/; fi
 - if [ ${GENERATE_POCO} = true ]; then rm -f poco-1.8.1-all-build.tar.bz2; fi
 
 
@@ -97,7 +97,7 @@ before_install:
 - if [ ${GENERATE_PROTOBUF} != true ]; then echo "Bypass protobuf/ldconfig"; else sudo ldconfig > $HOME/logs/yadoms_protobuf_pi.log; fi
 - if [ ${GENERATE_PROTOBUF} != true ]; then echo "Bypass protobuf/cd.."; else cd ..; fi
 - if [ ${GENERATE_PROTOBUF} = true ]; then tar cjf protobuf-3.4.1-build.tar.bz2 -C $HOME/depsBuild protobuf; fi
-- if [ ${GENERATE_PROTOBUF} = true ]; then curl --ftp-create-dirs -T protobuf-3.4.1-build.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}; fi
+- if [ ${GENERATE_PROTOBUF} = true ]; then curl --ftp-create-dirs -T protobuf-3.4.1-build.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}/; fi
 - if [ ${GENERATE_PROTOBUF} = true ]; then rm -f protobuf-3.4.1-build.tar.bz2; fi
 
 # gammu
@@ -113,7 +113,7 @@ before_install:
 - if [ ${GENERATE_GAMMU} != true ]; then echo "Bypass cd .."; else cd ..; fi
 - cd ..
 - if [ ${GENERATE_GAMMU} = true ]; then tar cjf gammu-1.38.4-build.tar.bz2 gammu-1.38.4; fi
-- if [ ${GENERATE_GAMMU} = true ]; then curl --ftp-create-dirs -T gammu-1.38.4-build.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}; fi
+- if [ ${GENERATE_GAMMU} = true ]; then curl --ftp-create-dirs -T gammu-1.38.4-build.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}/; fi
 - if [ ${GENERATE_GAMMU} = true ]; then rm -f gammu-1.38.4-build.tar.bz2; fi
 
 # PCRE
@@ -130,7 +130,7 @@ before_install:
 # - sudo make install > $HOME/logs/yadoms_swig.log
 - cd ..
 - if [ ${GENERATE_SWIG} = true ]; then tar cjf swig-3.0.12-build.tar.bz2 swig-3.0.12; fi
-- if [ ${GENERATE_SWIG} = true ]; then curl --ftp-create-dirs -T swig-3.0.12-build.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}; fi
+- if [ ${GENERATE_SWIG} = true ]; then curl --ftp-create-dirs -T swig-3.0.12-build.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}/; fi
 - if [ ${GENERATE_SWIG} = true ]; then rm -f swig-3.0.12-build.tar.bz2; fi
 
 # Python
@@ -146,7 +146,7 @@ before_install:
 - if [ ${GENERATE_POSTGRESQL} != true ]; then echo "Bypass PostgreSQL/make"; else make > $HOME/logs/yadoms_postgresql.log; fi
 - cd ../../../..
 - if [ ${GENERATE_POSTGRESQL} = true ]; then tar cjf postgresql-9.6.2-build.tar.bz2 postgresql-9.6.2; fi
-- if [ ${GENERATE_POSTGRESQL} = true ]; then curl --ftp-create-dirs -T postgresql-9.6.2-build.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}; fi
+- if [ ${GENERATE_POSTGRESQL} = true ]; then curl --ftp-create-dirs -T postgresql-9.6.2-build.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}/; fi
 - if [ ${GENERATE_POSTGRESQL} = true ]; then rm -f postgresql-9.6.2-build.tar.bz2; fi
 
 #Yadoms sources
@@ -218,9 +218,9 @@ after_failure:  # this will of course run only on failure
 - echo 'Package logs'
 - cd $HOME
 - tar cjf logs.$yadomsVersion.tar.bz2 logs
-- curl --ftp-create-dirs -T logs.$yadomsVersion.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}
+- curl --ftp-create-dirs -T logs.$yadomsVersion.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}/
 
 after_success: # and this only on success
 # Upload packages
 - echo 'Upload package'
-- curl --ftp-create-dirs -T "{$(echo builds/package/* | tr ' ' ',')}" -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}
+- curl --ftp-create-dirs -T "{$(echo builds/package/* | tr ' ' ',')}" -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}/
