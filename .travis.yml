@@ -10,7 +10,7 @@ before_install:
   - docker pull yadoms/build_for_ubuntu
   
 script:
-  - docker run -e YADOMS_BUILD_BRANCH=${YADOMS_BRANCH} -e MAKE_PACKAGE=true -e UPLOAD_FTP_CREDENTIALS=${FTP_USER}:${FTP_PASSWORD} yadoms/build_for_ubuntu
+  - docker run -e YADOMS_BUILD_BRANCH=${YADOMS_BRANCH} -e "MAKE_PACKAGE" -e UPLOAD_FTP_CREDENTIALS=${FTP_USER}:${FTP_PASSWORD} yadoms/build_for_ubuntu
 
 #TODO nettoyer
 # # Fix Travis write errors on Clang builds. These write errors occurred after
