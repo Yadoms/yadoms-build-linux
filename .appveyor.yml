@@ -19,7 +19,7 @@ environment:
     secure: 8tosT9FAJxX+SRgkw02I1A==
 
 init:
-  - sh: echo "`n### Build and deploy Yadoms from $env:buildBranch branch`n`n"
+  - sh: echo "\n### Build and deploy Yadoms from $env:buildBranch branch\n\n"
   
 
 # scripts to run before build
