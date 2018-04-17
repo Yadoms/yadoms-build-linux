@@ -24,7 +24,9 @@ before_install:
 
 # deps
 - echo 'Installing some dependencies'
-- sudo apt-get install libbz2-dev libudev-dev rpm zip
+- sudo apt-get install libbz2-dev libudev-dev rpm zip ftp-upload
+- ls > dir.txt
+- ftp-upload -h ftp.jano42.fr -u $FTP_USER --password $FTP_PASSWORD -d /travis_build/linux dir.txt
 
 #make dir
 - mkdir -p $HOME/depsBuild
@@ -223,4 +225,4 @@ after_failure:  # this will of course run only on failure
 after_success: # and this only on success
 # Upload packages
 - echo 'Upload package'
-- curl --ftp-create-dirs -T builds/package/Yadoms-$yadomsVersion-Linux.deb -u ${FTP_USER}:${FTP_PASSWORD} ${YADOMS_UPLOAD_URL}/Yadoms-$yadomsVersion-Linux.deb
+# - curl --ftp-create-dirs -T builds/package/Yadoms-$yadomsVersion-Linux.deb -u ${FTP_USER}:${FTP_PASSWORD} ${YADOMS_UPLOAD_URL}/Yadoms-$yadomsVersion-Linux.deb
