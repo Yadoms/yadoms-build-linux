@@ -27,7 +27,7 @@ before_install:
 - sudo apt-get install libbz2-dev libudev-dev rpm zip ftp-upload
 - ls > dir.txt
 #TODO - ftp-upload -h ftp.jano42.fr -u $FTP_USER --password $FTP_PASSWORD -d /travis_build/linux dir.txt
-- curl --ftp-create-dirs -T dir.txt -u ${FTP_USER}:${FTP_PASSWORD} --verbose ftp://ftp.jano42.fr/travis_build/linux/
+- curl --ftp-create-dirs -T dir.txt -u ${FTP_USER}:${FTP_PASSWORD} --verbose ftp://ftp.cluster010.ovh.net/travis_build/linux/
 
 #make dir
 - mkdir -p $HOME/depsBuild
