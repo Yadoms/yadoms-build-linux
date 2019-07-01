@@ -13,3 +13,12 @@ script:
   - docker run --name docCon -e MAKE_PACKAGE=true -e YADOMS_BUILD_BRANCH=${YADOMS_BRANCH} yadoms/build_for_ubuntu
   - docker cp docCon:/yadoms/builds/package .
   - ls -al package
+  
+deploy:
+  provider: releases
+  api_key: "${GH_OAUTH}"
+  file_glob: true
+  file: package/*
+  skip_cleanup: true  
+  draft: true
+  overwrite: true
