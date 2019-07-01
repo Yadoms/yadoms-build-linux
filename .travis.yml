@@ -12,4 +12,4 @@ before_install:
 script:
   - docker run --name docCon -e MAKE_PACKAGE=true -e YADOMS_BUILD_BRANCH=${YADOMS_BRANCH} yadoms/build_for_ubuntu
   - docker cp docCon:/yadoms/builds/package .
-  - ls -al
+  - ls -al package
