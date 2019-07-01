@@ -10,6 +10,6 @@ before_install:
   - docker pull yadoms/build_for_ubuntu
   
 script:
-  - docker run --name docCon -e MAKE_PACKAGE=true -e YADOMS_BUILD_BRANCH=${YADOMS_BRANCH} -e UPLOAD_FTP_CREDENTIALS=${FTP_USER}:${FTP_PASSWORD} yadoms/build_for_ubuntu
+  - docker run --name docCon -e MAKE_PACKAGE=true -e YADOMS_BUILD_BRANCH=${YADOMS_BRANCH} yadoms/build_for_ubuntu
   - docker cp docCon:/yadoms/builds/package .
   - ls -al
