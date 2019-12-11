@@ -13,7 +13,8 @@ script:
   - docker run --name docCon -e MAKE_PACKAGE=true -e YADOMS_BUILD_BRANCH=${YADOMS_BRANCH} yadoms/build_for_ubuntu${DOCKER_TAG} /entrypoint.sh
   - docker cp docCon:/yadoms/builds/package .
   - ls -al package
-  
+  - export VERSION=`echo package/Yadoms*.tar.gz | grep -oP '(?<=-).*(?=-)'`
+
 before_deploy:
   # Set up git user name and tag this commit
   #- git config --local user.name "YOUR GIT USER NAME"
@@ -27,9 +28,10 @@ deploy:
   file_glob: true
   file: package/*
   skip_cleanup: true  
-  tag_name: "yadoms-2.4.0-beta.1-tagname"
+  tag_name: "$VERSION"
   draft: true
   overwrite: true
   on:
     all_branches: true
     
+#tagname : déclare le nom du tag qui sera créé autoamtiquement lors de la publication du draft
