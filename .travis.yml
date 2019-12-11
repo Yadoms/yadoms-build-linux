@@ -27,6 +27,7 @@ deploy:
   file_glob: true
   file: package/*
   skip_cleanup: true  
+  tag_name: "yadoms-2.4.0-beta.1-tagname"
   draft: true
   overwrite: true
   on:
